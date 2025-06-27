@@ -53,8 +53,8 @@ body, .App {
 
 .retro-title {
   font-family: var(--retro-font);
-  font-size: 3rem;
-  color: var(--col-nintendo-red);
+  font-size: 3.125rem;
+  color: #3204d7;
   text-shadow:
     2px 2px 0 var(--col-nintendo-dark),
     0 2px 0 #fff,
