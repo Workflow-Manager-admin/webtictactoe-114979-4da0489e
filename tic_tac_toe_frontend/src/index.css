@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: 'PressStart2P', 'Courier New', Courier, monospace;
+  background: #f8f8f8;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+code, pre {
+  font-family: 'PressStart2P', 'Courier New', Courier, monospace;
+  background: #e9d7a6;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.94em;
+}

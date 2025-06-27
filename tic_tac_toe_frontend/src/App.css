@@ -1,0 +1,259 @@
+/* 
+  NES/Nintendo-Inspired Theme for Tic Tac Toe
+  - Pixel art, 8-bit details, classic colors & fonts
+  - No UI frameworks required
+*/
+
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('https://fonts.cdnfonts.com/s/13927/PressStart2P-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  /* NES Color Palette */
+  --col-nintendo-red: #d90429;
+  --col-nintendo-blue: #0072ef;
+  --col-nintendo-gray: #8e8e8e;
+  --col-nintendo-dark: #29272b;
+  --col-nintendo-light: #f8f8f8;
+  --col-nintendo-green: #6ac259;
+  --col-screen: #e9d7a6;
+  --col-win: #39c05b;
+  --col-draw: #ffb300;
+
+  --retro-font: 'PressStart2P', 'Consolas', 'Courier New', Courier, monospace;
+  --pixel-shadow: 0px 2px 0 #fff, 2px 0px 0 #fff, -2px 0px 0 #888, 0 -2px 0 #aaa;
+  --control-shadow: 0px 4px 0 #252525, 2px 6px 0 #807870;
+}
+
+body, .App {
+  background: var(--col-nintendo-light);
+  min-height: 100vh;
+  font-family: var(--retro-font) !important;
+  color: var(--col-nintendo-dark);
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.retro-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0 3rem 0;
+}
+
+/* Retro Header */
+.retro-header {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.retro-title {
+  font-family: var(--retro-font);
+  font-size: 3rem;
+  color: var(--col-nintendo-red);
+  text-shadow:
+    2px 2px 0 var(--col-nintendo-dark),
+    0 2px 0 #fff,
+    -2px -2px 0 #fff;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.08rem;
+}
+
+.retro-status-panel {
+  background: var(--col-screen);
+  margin: auto;
+  padding: 1rem 2.5rem 1rem 2.5rem;
+  border: 4px double var(--col-nintendo-blue);
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-family: var(--retro-font);
+  color: var(--col-nintendo-dark);
+  box-shadow: var(--control-shadow);
+  margin-bottom: 1.3rem;
+  min-width: 320px;
+  min-height: 34px;
+}
+
+/* 3x3 Board Styles */
+.retro-board {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 10px;
+  background: var(--col-nintendo-dark);
+  margin: 0 auto 2rem auto;
+  border-radius: 16px;
+  border: 6px solid var(--col-nintendo-blue);
+  box-shadow: 0 8px 0 #19181c, 0 0 1px #bcbcbc;
+  padding: 16px 16px 20px 16px;
+}
+
+/* Squares: pixel art, 8-bit effect */
+.retro-square {
+  font-family: var(--retro-font);
+  font-size: 2.4rem;
+  width: 64px;
+  height: 64px;
+  background: var(--col-nintendo-gray);
+  color: #fff;
+  border: 5px solid var(--col-nintendo-blue);
+  border-radius: 8px;
+  box-shadow: 0 3px 0 #212226, 3px 0 0 #212226;
+  outline: 2px solid #f8f8f8;
+  cursor: pointer;
+  transition: background 0.1s, box-shadow 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  -webkit-font-smoothing: none;
+  letter-spacing: 4px;
+}
+
+.retro-square.filled {
+  background: var(--col-screen);
+  color: var(--col-nintendo-dark);
+}
+
+.retro-square:active:not(:disabled) {
+  background: #e8b900;
+}
+
+.retro-square.disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* NINTENDO-style pixel pieces */
+.retro-piece {
+  font-family: var(--retro-font);
+  font-size: 2.5rem;
+  line-height: 1;
+  display: inline-block;
+  filter: drop-shadow(2px 2px #fcfcfc) drop-shadow(0 0 2px #bcbcbc);
+  text-shadow: 2px 0 #888, 0 2px #aaa, 2px 2px #fff;
+}
+
+.retro-piece-X {
+  color: var(--col-nintendo-red);
+  filter: drop-shadow(1px 1px #222);
+}
+
+.retro-piece-O {
+  color: var(--col-nintendo-blue);
+  filter: drop-shadow(1px 1px #222);
+}
+
+/* Control and Footer */
+.retro-control-panel {
+  text-align: center;
+  margin: 1.1rem 0 0.6rem 0;
+}
+
+.retro-btn {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: #fff;
+  background: #74798f;
+  border: 5px solid var(--col-nintendo-blue);
+  border-radius: 10px;
+  padding: 0.5rem 2.5rem;
+  margin: 0 0.2rem;
+  box-shadow: 0 5px #212226, 0 0 2px #fff;
+  text-shadow: 1px 1px var(--col-screen);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.1s;
+  appearance: none;
+}
+
+.retro-btn:active {
+  background: var(--col-nintendo-red);
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+}
+
+.nintendo-font {
+  font-family: var(--retro-font);
+  font-size: 0.9rem;
+}
+
+.copyright-symbol {
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+.retro-copyright {
+  margin-top: 14px;
+  text-align: center;
+  color: #90918b;
+  font-size: 0.85rem;
+  font-family: var(--retro-font);
+}
+
+.nes-text.is-success {
+  color: var(--col-win);
+  text-shadow: 1px 1px #19181c;
+  font-size: 1.16em;
+}
+.nes-text.is-warning {
+  color: var(--col-draw);
+  text-shadow: 1px 1px #eeecb5;
+  font-size: 1.13em;
+}
+
+/* Blinking "TURN" label for player indicator */
+.blink {
+  animation: blink-turn 0.7s linear infinite alternate;
+  color: var(--col-nintendo-gray);
+  font-size: 0.98em;
+  margin-left: 10px;
+}
+
+@keyframes blink-turn {
+  0% { opacity: 1; }
+  90% { opacity: 0.4; }
+  100%{ opacity: 1; }
+}
+
+/* Responsive layout tweaks */
+@media only screen and (max-width: 600px) {
+  .retro-header, .retro-title {
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .retro-status-panel {
+    min-width: 180px;
+    font-size: 0.93rem;
+    padding: 0.7rem 1rem;
+  }
+  .retro-board {
+    grid-template-columns: repeat(3, 48px);
+    grid-template-rows: repeat(3, 48px);
+    gap: 7px;
+    padding: 8px 8px 10px 8px;
+    border-width: 4px;
+  }
+  .retro-square, .retro-piece {
+    font-size: 1.3rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    border-width: 3px;
+    outline-width: 1px;
+  }
+  .retro-btn {
+    font-size: 0.8rem;
+    padding: 0.45rem 1.3rem;
+    border-radius: 6px;
+    border-width: 3px;
+    margin: 0 0.09rem;
+  }
+}
